@@ -34,15 +34,6 @@ function routeByHosts(host) {
 
 async function handleRequest(request) {
   const url = new URL(request.url);
-  // return docs
-  if (url.pathname === "/") {
-    return new Response(DOCS, {
-      status: 200,
-      headers: {
-        "content-type": "text/html"
-      }
-    });
-  }
   // orgi
   //if (url.pathname == "/") {
   //  return Response.redirect(url.protocol + "//" + url.host + "/v2/", 301);
@@ -59,6 +50,15 @@ async function handleRequest(request) {
     );
   }
   
+  // return docs
+  if (url.pathname === "/") {
+    return new Response(DOCS, {
+      status: 200,
+      headers: {
+        "content-type": "text/html"
+      }
+    });
+  }
   const isDockerHub = upstream == dockerHub;
   const authorization = request.headers.get("Authorization");
   if (url.pathname == "/v2/") {
