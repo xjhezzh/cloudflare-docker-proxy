@@ -34,10 +34,6 @@ function routeByHosts(host) {
 
 async function handleRequest(request) {
   const url = new URL(request.url);
-  // orgi
-  //if (url.pathname == "/") {
-  //  return Response.redirect(url.protocol + "//" + url.host + "/v2/", 301);
-  //}
   const upstream = routeByHosts(url.hostname);
   if (upstream === "") {
     return new Response(
